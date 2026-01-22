@@ -46,12 +46,11 @@ async def handle_url(message: types.Message):
     if "youtube.com" in message.text or "youtu.be" in message.text:
         await message.answer("⏳ Скачиваю видео, подожди немного...")
         result = downloader.download_video(message.text)
-        # Важно: parse_mode="Markdown", чтобы ссылки были кликабельными
         await message.answer(result, parse_mode="Markdown")
     else:
         await message.answer("Ссылка получена, но пока поддерживаю только YouTube.")
 
-# Обработка аудио (новый синтаксис для aiogram 3.x)
+# Обработка аудио
 @dp.message(F.audio)
 async def handle_audio(message: types.Message):
     file_id = message.audio.file_id
@@ -68,3 +67,4 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+    asyncio.run(main())
