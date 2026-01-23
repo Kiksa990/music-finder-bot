@@ -1,11 +1,11 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
-from config import API_TOKEN
+from config import BOT_TOKEN, SHAZAM_TOKEN
 import analyzer
 import downloader
 
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 # Команда /start
@@ -56,10 +56,10 @@ async def handle_audio(message: types.Message):
     file_id = message.audio.file_id
     file = await bot.get_file(file_id)
     file_path = file.file_path
-    audio_url = f"https://api.telegram.org/file/bot{API_TOKEN}/{file_path}"
+    audio_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_path}"
 
     await message.answer("🎶 Распознаю музыку...")
-    result = analyzer.recognize_music(audio_url)
+    result = analyzer.recognize_music(audio_url, SHAZAM_TOKEN)
     await message.answer(f"Результат: {result}")
 
 async def main():

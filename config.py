@@ -1,4 +1,4 @@
 import os
 
-API_TOKEN = os.getenv("API_TOKEN")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 SHAZAM_TOKEN = os.getenv("SHAZAM_TOKEN")
