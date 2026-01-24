@@ -1,4 +1,2 @@
-import os
-
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-SHAZAM_TOKEN = os.getenv("SHAZAM_TOKEN")
+TOKEN = "ВАШ_ТОКЕН_БОТА"
+ADMIN_ID = 6463617897
